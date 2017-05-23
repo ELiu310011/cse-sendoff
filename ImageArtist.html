@@ -1,0 +1,214 @@
+<html>
+<head>
+<link rel="icon"
+type="image/png"
+href="https://sirgo.org/images/computer-cartoon-13.jpg" />
+<title>Evan Liu's Computer Science Portfolio</title>
+
+<link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Baloo+Taaji">
+<style>
+body{     
+	color: white;
+	background-image: 
+	linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://tobyhargreavesart.files.wordpress.com/2013/04/butterfly-swarms.jpg");
+	background-repeat: no-repeat;
+	background-position: bottom left;
+	background-size: cover; 
+	font-family: ' Baloo Taaji ', sans-serif 
+	
+}
+
+
+div{
+line-height: 100%;
+<font = "1">
+text-align: right;
+}
+h1 { 
+	
+	text-align: left;
+	text-transform: uppercase;
+	line-height: 750%;
+	
+}
+
+h2 {
+	line-height: 200%;
+	text-decoration: none;
+}
+
+ul {
+	list-syle-type: none;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+.navitem a:hover{
+	color: green;
+}
+li {
+	float: left;
+	border-right: 1px solid #bbb;
+}
+li a {
+	
+	display: block;
+    color: White;
+    background-color: Black;
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+    
+}
+</style>
+
+</head>
+<body>
+<ul style="list-style-type: none;">
+
+				<li class ="navitem"><a href="PortfolioHome.html">Home</a></li>
+				<li class ="navitem"><a href="HobbyWebsite.html">Hobby Website</a></li>
+				<li class ="navitem"><a href="BonsaiArt.html">BonsaiJS Art</a></li>
+				<li class ="navitem"><a href="DreamVacation.html">My Dream Vacation</a></li>
+				<li class ="navitem"><a href="ScratchGame.html">Scratch Game</a></li>
+				<li class ="navitem"><a href="PythonAdventure.html">Interactive Python Adventure</a></li>
+				<li class ="navitem"><a href="ImageArtist.html">Image Artist</a></li>
+				<li class ="navitem"><a href="FinalProject.html">Final Project</a></li>
+</ul>
+
+<h1><p>Image Artist</h1>
+<p1>This project involved selecting a picture, and modifying it in a way that a photographic filter would. Our group decided to isolate only a certain shade of blue in a picture of a blue  butterfly, changing everything else into its grayscale counter-part.</p1>
+<iframe frameborder="0" width="1600px" height="1200px" src="file:///Users/cseper2/Desktop/Blue%20Butterfly/Blue%20Butterfly.jpg"></iframe>
+<p><iframe frameborder="0" width="1600px" height="1200px" src="file:///Users/cseper2/Desktop/Blue%20Butterfly/altered/Blue%20Butterfly.png"></iframe>
+<h2><p>The Code</h2>
+<p1><pre>import PIL
+import matplotlib.pyplot as plt # single use of plt is commented out
+import os.path  
+import numpy as np            
+
+def Average(original_image):
+    #Changes image into Grayscale filterred version, leaving only set parameters their original color
+    
+    #original_image must be a PIL.Image
+
+    #converts the image to a numpy ndarray
+    original_image = original_image.convert("RGB")
+    img = np.array(original_image)
+    
+    #gets the width and height of the original image
+    height = len(img)
+    width = len(img[0])
+    
+                            
+    #AVERAGE GRAYSCALE
+    for row in range(0, height):
+        for column in range(0, width):
+            r,g,b = img[row][column]
+            r = int(r)
+            g = int(g)
+            b = int(b)
+            if r+g+b < 310 or r+g+b > 975: #Leaves colors within the set parameters
+                img[row][column] = (.21*r+.72*g+.07*b)
+                
+    #Crop 1
+
+    for row in range(0, height):
+        for column in range(0, width/3):
+            r,g,b = img[row][column]
+            img[row][column] = [.21*r+.72*g+.07*b]
+            
+    #Crop 2
+    
+    for row in range(0, height):
+        for column in range(1150, width):
+            r,g,b = img[row][column]
+            img[row][column] = [.21*r+.72*g+.07*b]
+
+
+        #sample loop to check if a color is strongly represented
+    for row in range(0, height):
+        for column in range(0, width):
+            #checks if there is a lot of red but not as much green or blue
+            #and turns those pixels yellow
+            if img[row][column][0] >100 and sum(img[row][column]) < 150:
+                img[row][column] = img[row][column]
+                
+     
+    #show the second step by uncommenting the code below
+    #ax[1].imshow(img)
+
+    #convert it back to an image from an array
+    result = PIL.Image.fromarray(np.uint8(img))
+    
+    return result
+    
+def get_images(directory=None):
+    """ Returns PIL.Image objects for all the images in directory.
+    
+    If directory is not specified, uses current directory.
+    Returns a 2-tuple containing 
+    a list with a  PIL.Image object for each image file in root_directory, and
+    a list with a string filename for each image file in root_directory
+    """
+    
+    if directory == None:
+        directory = os.getcwd() # Use working directory if unspecified
+        
+    image_list = [] # Initialize aggregaotrs
+    file_list = []
+    
+    directory_list = os.listdir(directory) # Get list of files
+    for entry in directory_list:
+        absolute_filename = os.path.join(directory, entry)
+        try:
+            image = PIL.Image.open(absolute_filename)
+            file_list += [entry]
+            image_list += [image]
+        except IOError:
+            pass # do nothing with errors tying to open non-images
+    return image_list, file_list
+
+def Average_for_all_images(directory=None):
+    """ Saves a modfied version of each image in directory.
+    
+    Uses current directory if no directory is specified. 
+    Places images in subdirectory 'modified', creating it if it does not exist.
+    New image files are of type PNG and have transparent rounded corners.
+    """
+ 
+    if directory == None:
+        directory = os.getcwd() # Use working directory if unspecified
+        
+    # Create a new directory 'altered'
+    new_directory = os.path.join(directory, 'altered')
+    try:
+        os.mkdir(new_directory)
+    except OSError:
+        pass # if the directory already exists, proceed  
+    
+    #load all the images
+    image_list, file_list = get_images(directory)  
+
+    #go through the images and save modified versions
+    for n in range(len(image_list)):
+        # Parse the filename
+        filename, filetype = file_list[n].split('.')
+        
+        # calls your modified method, passing the color parameter
+        new_image = Average(image_list[n])
+
+        #save the altered image, suing PNG to retain transparency
+        new_image_filename = os.path.join(new_directory, filename + '.png')
+        new_image.save(new_image_filename)</p1>
+
+
+</div>
+</body>
+</html>

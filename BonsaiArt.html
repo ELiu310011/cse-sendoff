@@ -1,0 +1,216 @@
+<html>
+<head>
+<link rel="icon"
+type="image/png"
+href="https://sirgo.org/images/computer-cartoon-13.jpg" />
+<title>Evan Liu's Computer Science Portfolio</title>
+
+<link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Baloo+Taaji">
+<style>
+body{     
+	color: white;
+	background-image: 
+	linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://img.clipartfest.com/f51ff1bbd11ca595b5827fbf33c506a3_showing-post-media-for-cartoon-bamboo-forest-wwwcartoonsmixcom-cartoon-bamboo-forest_2560-1600.jpeg");
+	background-repeat: no-repeat;
+	background-position: bottom left;
+	background-size: cover; 
+	font-family: ' Baloo Taaji ', sans-serif 
+	
+}
+
+
+div{
+line-height: 100%;
+<font = "1">
+text-align: right;
+}
+h1 { 
+	
+	text-align: left;
+	text-transform: uppercase;
+	line-height: 750%;
+	
+}
+
+h2 {
+	line-height: 200%;
+	text-decoration: none;
+}
+
+ul {
+	list-syle-type: none;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+.navitem a:hover{
+	color: green;
+}
+li {
+	float: left;
+	border-right: 1px solid #bbb;
+}
+li a {
+	
+	display: block;
+    color: White;
+    background-color: Black;
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+    
+}
+</style>
+
+</head>
+<body>
+<ul style="list-style-type: none;">
+
+				<li class ="navitem"><a href="PortfolioHome.html">Home</a></li>
+				<li class ="navitem"><a href="HobbyWebsite.html">Hobby Website</a></li>
+				<li class ="navitem"><a href="BonsaiArt.html">BonsaiJS Art</a></li>
+				<li class ="navitem"><a href="DreamVacation.html">My Dream Vacation</a></li>
+				<li class ="navitem"><a href="ScratchGame.html">Scratch Game</a></li>
+				<li class ="navitem"><a href="PythonAdventure.html">Interactive Python Adventure</a></li>
+				<li class ="navitem"><a href="ImageArtist.html">Image Artist</a></li>
+				<li class ="navitem"><a href="FinalProject.html">Final Project</a></li>
+</ul>
+
+<h1><p>BonsaiJS Art</h1>
+<p1>This work is a static image ( or GIF in some cases ) generated through the creation of several, smaller shapes in order to form a larger product. In my individual case, I created a gif containing rapidly rotating shurikens, or ninja stars, using several triangles set to rotate at the same degree at the same time. This project served as a helpful introduction to this language, and a stellar demonstration of simple shapes and simple code.</font></p1>
+<p><img src= "https://d1b10bmlvqabco.cloudfront.net/attach/is1vls3kul51gr/isj13asqc6xoe/itu7fe4y94fs/CSE_Bonsai_LiuE.gif"style="width:400px;height:400px;">
+
+
+<div>
+<h2>The Code</h2>
+<p1><pre>var test = new Star ( 0, 400, 24, 4, 10);
+test.fill("black");
+test.addTo(stage);
+var test2 = new Star ( 0, 400, 5, 4 , 10);
+test2.fill("white");
+test2.addTo(stage);
+
+test.animate('10000ms', { x: 155 }, { easing: 'elasticOut' });
+test.animate('5s', { rotation: Math.PI*13 },
+                   { repeat:Infinity }
+);
+test2.animate('10000ms', { x: 155 }, { easing: 'elasticOut' });
+test2.animate('5s', { rotation: Math.PI*13 },
+                    { repeat:Infinity }
+);                   
+// MORE STARRRRZ
+var test3 = new Star ( 0, 200, 5, 4, 10);
+test3.fill("black");
+test3.addTo(stage);
+
+var test4 = new Star ( 0, 200, 5/4, 4 , 10);
+test4.fill("white");
+test4.addTo(stage);
+test3.animate('10000ms', { x: 150 }, { easing: 'elasticOut' });
+test3.animate('5s', { rotation: Math.PI*13 },
+                    { repeat:Infinity }
+);
+test4.animate('10000ms', { x: 150 }, { easing: 'elasticOut' });
+test4.animate('5s', { rotation: Math.PI*13 },
+                    { repeat:Infinity }
+);
+//MORRREEEE
+var test5 = new Star (0, 7, 10, 4, 10);
+test5.fill("black");
+test5.addTo(stage);
+var test6 = new Star ( 0, 7, 10/4, 4 , 10);
+test6.fill("white");
+test6.addTo(stage);
+test5.animate('10000ms', { x: 275 }, { easing: 'elasticOut' });
+test5.animate('5s', { rotation: Math.PI*13 },
+                    { repeat:Infinity }
+);
+test6.animate('10000ms', { x: 275 }, { easing: 'elasticOut' });
+test6.animate('5s', { rotation: Math.PI*13 },
+                    { repeat:Infinity }
+);
+var test7 = new Star (0, 150, 7, 4, 10);
+test7.fill("black");
+test7.addTo(stage);
+var test8 = new Star ( 0, 150, 7/4, 4 , 10);
+test8.fill("white");
+test8.addTo(stage);
+test7.animate('10000ms', { x: 400 }, { easing: 'elasticOut' });
+test7.animate('5s', { rotation: Math.PI*13 },
+                    { repeat:Infinity }
+);
+test8.animate('10000ms', { x: 400 }, { easing: 'elasticOut' });
+test8.animate('5s', { rotation: Math.PI*13 },
+                    { repeat:Infinity }
+);
+var test9 = new Star (0, 50, 3, 4, 10);
+test9.fill("black");
+test9.addTo(stage);
+var test10 = new Star ( 0, 50, 3/4, 4 , 10);
+test10.fill("white");
+test10.addTo(stage);
+
+test9.animate('10000ms', { x: 100 }, { easing: 'elasticOut' });
+test9.animate('5s', { rotation: Math.PI*13 },
+                    { repeat:Infinity }
+);
+test10.animate('10000ms', { x: 100 }, { easing: 'elasticOut' });
+test10.animate('5s', { rotation: Math.PI*13 },
+                    { repeat:Infinity }
+);
+
+var ninja = new Bitmap('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Ninja-kanji.svg/1280px-Ninja-kanji.svg.png', function(err) {
+  if (err) return;
+  this.attr({
+    y: -200,
+    x: 900,
+    scale: .15,
+  });
+  ninja.animate('2000ms', { opacity: 0 });
+  stage.addChild(this);
+  this.animate('1s', {x: 0, y: 0, rotation: 0});
+});
+var ninja2 = new Bitmap('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Ninja-kanji.svg/1280px-Ninja-kanji.svg.png', function(err) {
+  if (err) return;
+  this.attr({
+    y: -200,
+    x: 900,
+    scale: .15,
+  });
+  ninja2.animate(
+    '2s',
+  { x: 290,
+    y: 480
+  }
+    );
+  stage.addChild(this);
+  this.animate('1s', {x: 0, y: 0, rotation: 0});
+});
+var PANDA2 = new Bitmap('http://www.animatedimages.org/data/media/345/animated-panda-image-0096.gif', function(err) {
+  this.attr({
+    y: -200,
+    x: 900,
+    scale: .35,
+  });
+  PANDA2.animate(
+    '2s',
+  { x: 330.5,
+    y: 410
+  }
+    );
+  stage.addChild(this);
+  this.animate('1s', {x: 50, y: -60, rotation: 0});
+});
+//Credit For Pictures
+//http://www.animatedimages.org
+//https://upload.wikimedia.org</p1>
+</div>
+</body>
+</html>
